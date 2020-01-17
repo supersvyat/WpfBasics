@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Fragment>
+    <!--Добавления ярлыков-->
+    <ComponentGroup Id="Shortcuts">
+      <Component Id="UnistallApplicationShortcut" Guid="{63E90EEA-1C06-466A-95F5-CDCAE5416565}" Directory="ApplicationProgramsFolder">
+        <Shortcut Id="UnistallApplicationShortcut"
+                  Name="Unistall !(loc.ProductName_$(var.Platform))"
+                  Description="Unistall My Application Description"
+                  Target="[System64Folder]msiexec.exe"
+                  Arguments="/x [ProductCode]"/>
+        <RemoveFolder Id="RemoveDesktopFolder" Directory="ApplicationProgramsFolder" On="uninstall" />
+        <RemoveFolder Id="RemoveDesktopFolder1" Directory="DesktopFolder" On="uninstall"/>
+        <RegistryValue Root="HKCU" Key="Software[Manufacturer]\[ProductName]" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
+      </Component>
+      <Component Id="UnistallDesktopShortcut" Guid="{3E36F0A4-4084-4BDD-8FB2-183A3947F3A2}" Directory="DesktopFolder">
+        <Shortcut Id="UnistallDesktopShortcut"
+                  Name="Unistall !(loc.ProductName_$(var.Platform))"
+                  Description="Unistall My Application Description"
+                  Target="[System64Folder]msiexec.exe"
+                  Arguments="/x [ProductCode]"/>
+        <RegistryValue Root="HKCU" Key="Software\[Manufacturer]\[ProductName]" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
+      </Component>
+    </ComponentGroup>
+	</Fragment>
+</Wix>

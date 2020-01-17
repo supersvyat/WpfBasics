@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Include>
+  <!-- Название продукта в том виде, в котором оно должно отображаться в разделе «Установка и удаление программ-->
+  <?if $(var.Platform) = x64 ?>
+
+  <?define ProductCode ="*"?>
+  <?define Win64 = "yes" ?>
+  <?define PlatformProgramFilesFolder = "ProgramFiles64Folder" ?>
+  <?else ?>
+
+  <?define ProductCode ="*"?>
+  <?define Win64 = "no" ?>
+  <?define PlatformProgramFilesFolder = "ProgramFilesFolder" ?>
+  <?endif ?>
+
+  <?define UpgradeCode = "{D5B9E7C0-C840-456F-84F1-28AE6888C0D9}" ?>
+  <?define BuildVersion = 1.0.0.0 ?>
+</Include>

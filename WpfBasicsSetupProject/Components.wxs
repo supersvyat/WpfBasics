@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <?include Global.wxi?>
+  <Fragment>
+    <ComponentGroup Id="ProductComponents" Directory="APPLICATIONFOLDER">
+      <!-- TODO: Remove the comments around this Component element and the ComponentRef below in order to add resources to this installer. -->
+      <!-- <Component Id="ProductComponent"> -->
+      <!-- TODO: Insert files, registry keys, and other resources here. -->
+      <!-- </Component> -->
+      <Component Id="WpfBasics.exe" Guid="{9C5EA1BA-BACE-48F5-AB8D-3DB07EC12910}" Win64="$(var.Win64)" KeyPath="yes">
+        <File Id="WpfBasics.exe" Source="$(var.WpfBasics.TargetDir)\WpfBasics.exe" />
+        <Shortcut Id="ApplicationStartMenuShortcut1" Name="WpfBasics.exe" Description="My Application Description" Directory="ApplicationProgramsFolder"/>
+        <Shortcut Id="ApplicationDesktopShortcut1" Name="WpfBasics.exe" Description="My Application Description" Directory="DesktopFolder" />
+      </Component>
+      <Component Id="WpfBasics.exe.config" Guid="{9B2EB59D-8ABD-46D1-8CE8-31BDBAC06E3F}" Win64="$(var.Win64)" KeyPath="yes">
+        <File Id="WpfBasics.exe.config" Source="$(var.WpfBasics.TargetDir)\WpfBasics.exe.config" />
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+</Wix>

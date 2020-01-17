@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <?include Global.wxi?>
+
+  <Product Id="$(var.ProductCode)"
+           Name="!(loc.ProductName_$(var.Platform))"
+           Language="!(loc.Language)"
+           Version="$(var.BuildVersion)"
+           Manufacturer="!(loc.Company)"
+           UpgradeCode="$(var.UpgradeCode)">
+
+    <Package InstallerVersion="405"
+             Compressed="yes"
+             InstallScope="perMachine"
+             Platform="$(var.Platform)"
+             Manufacturer="!(loc.Company)"
+             Description="!(loc.Description)"
+             Keywords="!(loc.Keywords)"
+             Comments="!(loc.Comments)"
+             Languages="!(loc.Language)"/>
+
+		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+                   
+		<MediaTemplate  EmbedCab="yes"/>
+    
+    
+    <Property Id="ARPPRODUCTICON">icon.ico</Property>
+
+    <Icon Id="icon.ico" SourceFile="$(var.WpfBasics.ProjectDir)\icon.ico"/>
+
+    <Property Id="WIXUI_INSTALLDIR" Value="APPLICATIONFOLDER"/>
+
+    <UIRef Id="WixUI_InstallDir"/>
+
+
+
+		<Feature Id="ProductFeature" Title="WpfBasicsSetupProject" Level="1">
+			<ComponentGroupRef Id="ProductComponents" />
+      <ComponentGroupRef Id="Shortcuts" />
+		</Feature>
+	</Product>
+</Wix>

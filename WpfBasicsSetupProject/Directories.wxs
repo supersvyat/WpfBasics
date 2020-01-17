@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <?include Global.wxi?>
+  <Fragment>
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <!--Создание директорий для создания ярлыков в меню программ и рабочем столе-->
+      <Directory Id="ProgramMenuFolder">
+        <Directory Id="ApplicationProgramsFolder" Name="!(loc.ProductName_$(var.Platform))"/>
+        <Directory Id="DesktopFolder" Name="Desktop"/>
+      </Directory>
+
+      <!--Директория Progam Files/Program Files (x86)-->
+      <Directory Id="$(var.PlatformProgramFilesFolder)">
+
+        <!--Создание иерархии (Progam Files/Program Files (x86))\APPLICATIONFOLDER\-->
+        <Directory Id="APPLICATIONFOLDER" Name="!(loc.ProductNameFolder)" >
+
+          <!--Создание нескольких папок в одной-->
+          <Directory Id="Directory1" Name="MessageBoxCA"/>
+          <Directory Id="Directory3" Name="TestINI"/>
+        </Directory>
+      </Directory>
+    </Directory>
+  </Fragment>
+</Wix>
