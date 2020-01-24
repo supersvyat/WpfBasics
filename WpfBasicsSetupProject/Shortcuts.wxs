@@ -1,26 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
 	<Fragment>
-    <!--Добавления ярлыков-->
-    <ComponentGroup Id="Shortcuts">
-      <Component Id="UnistallApplicationShortcut" Guid="{63E90EEA-1C06-466A-95F5-CDCAE5416565}" Directory="ApplicationProgramsFolder">
-        <Shortcut Id="UnistallApplicationShortcut"
-                  Name="Unistall !(loc.ProductName_$(var.Platform))"
-                  Description="Unistall My Application Description"
-                  Target="[System64Folder]msiexec.exe"
-                  Arguments="/x [ProductCode]"/>
-        <RemoveFolder Id="RemoveDesktopFolder" Directory="ApplicationProgramsFolder" On="uninstall" />
-        <RemoveFolder Id="RemoveDesktopFolder1" Directory="DesktopFolder" On="uninstall"/>
-        <RegistryValue Root="HKCU" Key="Software[Manufacturer]\[ProductName]" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
-      </Component>
-      <Component Id="UnistallDesktopShortcut" Guid="{3E36F0A4-4084-4BDD-8FB2-183A3947F3A2}" Directory="DesktopFolder">
-        <Shortcut Id="UnistallDesktopShortcut"
-                  Name="Unistall !(loc.ProductName_$(var.Platform))"
-                  Description="Unistall My Application Description"
-                  Target="[System64Folder]msiexec.exe"
-                  Arguments="/x [ProductCode]"/>
+    <DirectoryRef Id="ApplicationProgramsFolder">
+      <Component Id="ProgramsFolderShortcutComponent" Guid="{560C1F1E-A49B-49EA-AE18-FDB7CE8DA2DB}">
+        <Shortcut Id="AppProgramsFolderShortcut"
+                  Name="!(loc.ProductName_$(var.Platform))"
+                  Description="Some description"
+                  Target="[APPLICATIONFOLDER]WpfBasics.exe"
+                  WorkingDirectory="APPLICATIONFOLDER"/>
+        <RemoveFolder Id="ApplicationProgramsFolder" Directory="ApplicationProgramsFolder" On="uninstall"/>
         <RegistryValue Root="HKCU" Key="Software\[Manufacturer]\[ProductName]" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
       </Component>
-    </ComponentGroup>
+      <Component Id="UnProgramsFolderShortcutComponent" Guid="{1ECE6717-B5AE-45F5-BA33-4DB8A3935F0E}" >
+        <Shortcut Id="UnistallAppProgramsFolderShortcut"
+                  Name="Unistall !(loc.ProductName_$(var.Platform))"
+                  Description="Unistall My Application Description"
+                  Target="[System64Folder]msiexec.exe"
+                  Arguments="/x [ProductCode]"
+                  Icon="UninstallAppIcon"/>
+        <RegistryValue Root="HKCU" Key="Software\[Manufacturer]\[ProductName]" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
+      </Component>
+    </DirectoryRef>
+    <DirectoryRef Id="DesktopFolder">
+      <Component Id="DesktopShortcutComponent" Guid="{17261AD1-F5C0-4241-B5AE-B37A1BDC3A9A}">
+        <Shortcut Id="AppDesktopShortcut"
+                  Name="!(loc.ProductName_$(var.Platform))"
+                  Description="Some description"
+                  Target="[APPLICATIONFOLDER]WpfBasics.exe"
+                  WorkingDirectory="APPLICATIONFOLDER"/>
+        <RemoveFolder Id="DesktopFolder" Directory="DesktopFolder" On="uninstall"/>
+        <RegistryValue Root="HKCU" Key="Software\[Manufacturer]\[ProductName]" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
+      </Component>
+      <Component Id="UnDesktopShortcutComponent" Guid="{3E36F0A4-4084-4BDD-8FB2-183A3947F3A2}" >
+        <Shortcut Id="UnistallAppDesktopShortcut"
+                  Name="Unistall !(loc.ProductName_$(var.Platform))"
+                  Description="Unistall My Application Description"
+                  Target="[System64Folder]msiexec.exe"
+                  Arguments="/x [ProductCode]"
+                  Icon="UninstallAppIcon"/>
+        <RegistryValue Root="HKCU" Key="Software\[Manufacturer]\[ProductName]" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
+      </Component>
+    </DirectoryRef>
 	</Fragment>
 </Wix>

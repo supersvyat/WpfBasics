@@ -4,20 +4,15 @@
   <Fragment>
     <Directory Id="TARGETDIR" Name="SourceDir">
       <!--Создание директорий для создания ярлыков в меню программ и рабочем столе-->
-      <Directory Id="ProgramMenuFolder">
-        <Directory Id="ApplicationProgramsFolder" Name="!(loc.ProductName_$(var.Platform))"/>
-        <Directory Id="DesktopFolder" Name="Desktop"/>
+      <Directory Id="ProgramMenuFolder" Name="!(loc.ProductNameFolder)">
+        <Directory Id="ApplicationProgramsFolder" Name="!(loc.ProductNameFolder)" />
+        <Directory Id="DesktopFolder"/> 
       </Directory>
-
       <!--Директория Progam Files/Program Files (x86)-->
       <Directory Id="$(var.PlatformProgramFilesFolder)">
-
         <!--Создание иерархии (Progam Files/Program Files (x86))\APPLICATIONFOLDER\-->
         <Directory Id="APPLICATIONFOLDER" Name="!(loc.ProductNameFolder)" >
-
           <!--Создание нескольких папок в одной-->
-          <Directory Id="Directory1" Name="MessageBoxCA"/>
-          <Directory Id="Directory3" Name="TestINI"/>
         </Directory>
       </Directory>
     </Directory>

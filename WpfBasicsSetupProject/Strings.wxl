@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WixLocalization Culture="ru-ru" xmlns="http://schemas.microsoft.com/wix/2006/localization">
-	<String Id="Company">_Company</String>
+	<String Id="Company">_TestCompany</String>
   
-	<String Id="ProductNameFolder">_ProductNameFolder</String>
-  <String Id="CompanyNameFolder">_CompanyNameFolder</String>
+	<String Id="ProductNameFolder">_WpfBasicsFolder</String>
+  <String Id="CompanyNameFolder">_Svyatoslav</String>
 
   <String Id="Description">_Description</String>
   <String Id="Keywords">_Keywords:Wix,Wpf,Test</String>
   <String Id="Comments">Just practice</String>
 
-  <String Id="ProductName_x86">_ProductName (32bit)</String>
-  <String Id="ProductName_x64">_ProductName (64bit)</String>
+  <String Id="ProductName_x86">_WpfBasics(32bit)</String>
+  <String Id="ProductName_x64">_WpfBasics(64bit)</String>
 
   <String Id="Language">1049</String>
 

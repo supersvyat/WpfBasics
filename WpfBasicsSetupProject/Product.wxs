@@ -19,24 +19,34 @@
              Comments="!(loc.Comments)"
              Languages="!(loc.Language)"/>
 
-		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
-                   
+		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />           
 		<MediaTemplate  EmbedCab="yes"/>
     
     
-    <Property Id="ARPPRODUCTICON">icon.ico</Property>
+    
 
-    <Icon Id="icon.ico" SourceFile="$(var.WpfBasics.ProjectDir)\icon.ico"/>
+    <Icon Id="AppIcon" SourceFile="$(var.ProjectDir)Adds\icon.ico"/>
+    <Icon Id="UninstallAppIcon" SourceFile="$(var.ProjectDir)Adds\trash.ico"/>
 
+    <Property Id="ARPPRODUCTICON" Value="AppIcon"/>
     <Property Id="WIXUI_INSTALLDIR" Value="APPLICATIONFOLDER"/>
 
     <UIRef Id="WixUI_InstallDir"/>
 
-
-
+    
 		<Feature Id="ProductFeature" Title="WpfBasicsSetupProject" Level="1">
-			<ComponentGroupRef Id="ProductComponents" />
-      <ComponentGroupRef Id="Shortcuts" />
-		</Feature>
+      <ComponentGroupRef Id="App"/>
+    </Feature>
+    
+    <Feature Id="ProgramsFolderShortcutsFeature" Title="AddProgramsFolderShortcuts" Level="1">
+      <ComponentRef Id="ProgramsFolderShortcutComponent"/>
+      <ComponentRef Id="UnProgramsFolderShortcutComponent"/>
+    </Feature>
+    
+    <Feature Id="DesktopShortcutsFeature" Title="AddDesktopShortcuts" Level="1">
+      <ComponentRef Id="DesktopShortcutComponent"/>
+      <ComponentRef Id="UnDesktopShortcutComponent"/>
+    </Feature>
+    
 	</Product>
 </Wix>
